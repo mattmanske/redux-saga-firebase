@@ -1,14 +1,14 @@
 import { eventChannel } from 'redux-saga'
 import { call } from 'redux-saga/effects'
 
-function * login (authProvider) {
+function* login (authProvider) {
   const auth = this.app.auth()
   const { credential } = yield call([auth, auth.signInWithPopup], authProvider)
 
   return credential
 }
 
-function * logout () {
+function* logout () {
   const auth = this.app.auth()
   yield call([auth, auth.signOut])
 }

@@ -12,7 +12,7 @@ export function getFunctionURL (functionName, parameters = {}) {
   else return baseUrl
 }
 
-function * _call (functionName, parameters = {}) {
+function* _call (functionName, parameters = {}) {
   const url = getFunctionURL.call(this, functionName, parameters)
 
   const response = yield call(fetch, url)

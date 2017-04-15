@@ -1,31 +1,31 @@
 import { eventChannel } from 'redux-saga'
 import { call } from 'redux-saga/effects'
 
-function * get (path) {
+function* get (path) {
   const ref = this.app.database().ref(path)
   const result = yield call([ref, ref.once], 'value')
 
   return result.val()
 }
 
-function * create (path, data) {
+function* create (path, data) {
   const ref = this.app.database().ref(path)
   const result = yield call([ref, ref.push], data)
 
   return result.key
 }
 
-function * update (path, data) {
+function* update (path, data) {
   const ref = this.app.database().ref(path)
   yield call([ref, ref.set], data)
 }
 
-function * patch (path, data) {
+function* patch (path, data) {
   const ref = this.app.database().ref(path)
   yield call([ref, ref.update], data)
 }
 
-function * _delete (path) {
+function* _delete (path) {
   const ref = this.app.database().ref(path)
   yield call([ref, ref.remove])
 }
